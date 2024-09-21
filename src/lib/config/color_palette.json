@@ -1,0 +1,10 @@
+{
+  "button": {
+    "type_blue":{
+      "base": "#081E74",
+      "border": "#6A78AB",
+      "text": "#FFFFFF",
+      "hover": "#081E74"
+    }
+  }
+}
