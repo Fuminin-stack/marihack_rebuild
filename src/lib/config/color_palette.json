@@ -5,6 +5,12 @@
       "border": "#6A78AB",
       "text": "#FFFFFF",
       "hover": "#081E74"
+    },
+    "type_black":{
+      "base": "#000000",
+      "border": "#FFFFFF",
+      "text": "#FFFFFF",
+      "hover": "#081E74"
     }
   }
 }

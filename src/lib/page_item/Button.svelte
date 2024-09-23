@@ -30,7 +30,7 @@
 <div>
   <button
     id="upper"
-      
+
     style="
       position: relative;
       font-family: 'GeneralSans-Regular';
@@ -45,21 +45,18 @@
       right: {$_border + 'px'};
       bottom: {$_border + 'px'};
     "
-    
+
     on:focus={() => {}}
-    
     on:click={react}
-    
     on:mouseenter={() => {
       _border.set(2);
       _color = color_on_hover;
     }}
-    
     on:mouseleave={() => {
       _border.set(4)
       _color = color;
     }}
-    >
+  >
     
     <p
       style="color: {text_color}"
@@ -69,6 +66,3 @@
   
   </button>
 </div>
-
-<style>
-</style>
