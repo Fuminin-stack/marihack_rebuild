@@ -1,6 +1,6 @@
 <!-- Round corner, 3D, button-->
 <script>
-  import colors from "$lib/config/color_palette.json"
+  import colors from "$lib/storage/color_palette.json"
   import { tweened } from "svelte/motion";
 
   /* Using color theme to set colors */
@@ -28,6 +28,7 @@
 </script>
 
 <div>
+  <!-- style in <style> can not be updated as a variable -->
   <button
     id="upper"
 

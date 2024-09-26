@@ -1,18 +1,19 @@
 <script>
   /* load colors */
-  import colors_json from "$lib/config/color_palette.json";
+  import Button from "$lib/page_item/Button.svelte";
+  
+  import colors_json from "$lib/storage/color_palette.json";
   const COLORS = colors_json;
 
-  $: outerWidth = 0
 </script>
 
-<svelte:window bind:outerWidth />
-
-<!-- Outermost container which premits overflowing -->
-<div style="overflow: visible;">
+<!-- Outermost container which allows overflowing -->
+<div style="width: 100$;">
   <!-- Navigation Bar -->
-  <div style="width: 100%; height: 20px; background-color: green; margin: 0px">
-    hi
+  <div style="width: 100%; margin: 0px">
+    <Button color_theme={COLORS.button.type_black}
+      text_size="10px"
+      text_val="hi"/>
   </div>
   <div class="floating_div">
   </div>
