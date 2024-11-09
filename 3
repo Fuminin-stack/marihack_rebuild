@@ -6,11 +6,10 @@
   import colors from "$lib/storage/color_palette.json"
   import { tweened } from "svelte/motion";
 
-  /* Text on the button */
-  export let text_val;
-
   /* Using color theme to set colors */
   export let color_theme = colors.button.type_blue;
+  /* Text on the button */
+  export let text_val;
   /* Color of the button in Hex color code*/
   export let color = color_theme.base;
   /* Color of the button when a mouse hovers above*/
@@ -21,30 +20,17 @@
   export let text_color = color_theme.text;
   /* Font Family */
   export let font = color_theme.font;
-
   /* Size of the button */
-  export let size_info = {
-    // size of the actual button
-    text: "16px",
-    text_margin: "6px",
-    // size of the button to its parent
-    hitbox_width: "90px",
-    hitbox_height: "90px",
-    // radius of the round corner
-    border_radius: "20px",
-  };
-
+  export let text_size;
   /* If disable */
   export let enable = true;
-
   /* On click function*/
   export let react = () => {};
-
+ 
   let _color = color;
-  let _anchor_display = "visible";
   let _opacity = 1;
   let _border = tweened(4, {
-    duration: 75,
+    duration: 50,
   });
 
   if (!enable) {
@@ -52,25 +38,17 @@
   }
 </script>
 
-<div id="hitbox" 
-  style="
-    --hitbox_width: {size_info.hitbox_width};
-    --hitbox_height: {size_info.hitbox_height};
-  "
-  >
-<div id="anchor"
-  style="--display_mode: {_anchor_display};"
-  >
+<div>
+<div id="anchor">
   <!-- style in <style> can not be updated as a variable -->
   <button
     style="
       --font: {font};
-      --text_size: {size_info.text};
+      --text_size: {text_size};
       --outline_color: {outline_color};
       --_color: {_color};
       --_border: {$_border + 'px'};
       --_opacity: {_opacity};
-      --border_radius: {size_info.border_radius};
     "
 
     on:focus={() => {}}
@@ -88,10 +66,7 @@
   >
     
     <p
-      style="
-        --text_color: {text_color};
-        --text_margin: {size_info.text_margin};
-      "
+      style="--text_color: {text_color}"
     >
       {text_val}
     </p>
@@ -100,34 +75,25 @@
 </div>
 </div>
 <style>
-#hitbox {
-  width: var(--hitbox_width);
-  height: var(--hitbox_height);
+
+div {
+  background-color: green;
 }
 
 #anchor {
-  position: relative;
-  top: 50%;
-  left: 50%;
-
-  width: 1px;
-  height: 1px;
+  width: 10px;
+  height: 10px;
+  background-color: red;
   overflow: visible;
-
-  display: grid;
-  justify-content: center;
-  align-content: center;
+  display: inline;
 }
 
 button {
   position: relative;
-
   font-family: var(--font);
   font-size: var(--text_size);
-
   background-color: var(--_color);
-
-  border-radius: var(--border_radius);
+  border-radius: 20px;
   border-style: solid;
   border-width: 1px;
   border-color: var(--outline_color);
@@ -135,14 +101,13 @@ button {
   border-bottom-width: var(--_border);
   right: var(--_border);
   bottom: var(--_border);
-
   opacity: var(--_opacity);
 }
 
 p {
   color: var(--text_color);
-  margin: var(--text_margin);
-  padding: var(--text_margin);
+  margin: 6px;
+  padding: 6px;
 }
 
 </style>

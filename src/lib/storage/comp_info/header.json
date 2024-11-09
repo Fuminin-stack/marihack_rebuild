@@ -1,0 +1,9 @@
+{
+  "nav_bar": {
+    "buttons": {
+      "about": "About",
+      "sponsors": "Sponsors",
+      "FAQ": "FAQ"
+    }
+  }
+}

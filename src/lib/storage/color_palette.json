@@ -4,13 +4,18 @@
       "base": "#081E74",
       "border": "#6A78AB",
       "text": "#FFFFFF",
-      "hover": "#081E74"
+      "hover": "#081E74",
+      "font": "GeneralSans-Medium"
     },
     "type_black":{
       "base": "#000000",
       "border": "#FFFFFF",
       "text": "#FFFFFF",
-      "hover": "#081E74"
+      "hover": "#081E74",
+      "font": "GeneralSans-Medium"
     }
+  },
+  "pages": {
+
   }
 }
