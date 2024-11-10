@@ -6,27 +6,28 @@
   import colors from "$lib/storage/color_palette.json"
   import { tweened } from "svelte/motion";
 
-  /* Text on the button */
+  // Text on the button
   export let text_val;
 
-  /* Using color theme to set colors */
+  // Using color theme to set colors
   export let color_theme = colors.button.type_blue;
-  /* Color of the button in Hex color code*/
+  // Color of the button in Hex color code
   export let color = color_theme.base;
-  /* Color of the button when a mouse hovers above*/
+  // Color of the button when a mouse hovers above
   export let color_on_hover = color_theme.hover;
-  /* Color of the outline */
+  // Color of the outline
   export let outline_color = color_theme.border;
-  /* Color of the text */
+  // Color of the text
   export let text_color = color_theme.text;
-  /* Font Family */
+  // Font Family
   export let font = color_theme.font;
 
-  /* Size of the button */
+  // Size info of the button
   export let size_info = {
     // size of the actual button
     text: "16px",
-    text_margin: "6px",
+    text_margin_width: "6px",
+    text_margin_height: "6px",
     // size of the button to its parent
     hitbox_width: "90px",
     hitbox_height: "90px",
@@ -34,10 +35,10 @@
     border_radius: "20px",
   };
 
-  /* If disable */
+  // If disable
   export let enable = true;
 
-  /* On click function*/
+  // On click function
   export let react = () => {};
 
   let _color = color;
@@ -48,7 +49,7 @@
   });
 
   if (!enable) {
-    _opacity = 0.5;
+    _opacity = 0.60;
   }
 </script>
 
@@ -90,7 +91,8 @@
     <p
       style="
         --text_color: {text_color};
-        --text_margin: {size_info.text_margin};
+        --text_margin_width: {size_info.text_margin_width};
+        --text_margin_height: {size_info.text_margin_height};
       "
     >
       {text_val}
@@ -141,8 +143,14 @@ button {
 
 p {
   color: var(--text_color);
-  margin: var(--text_margin);
-  padding: var(--text_margin);
+  margin-top: var(--text_margin_height);
+  margin-bottom: var(--text_margin_height);
+  margin-left: var(--text_margin_width);
+  margin-right: var(--text_margin_width);
+  padding-top: var(--text_margin_height);
+  padding-bottom: var(--text_margin_height);
+  padding-left: var(--text_margin_width);
+  padding-right: var(--text_margin_width);
 }
 
 </style>

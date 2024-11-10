@@ -6,33 +6,26 @@
   import Header from "$lib/page_comp/Header.svelte";
 
   import star_map from "$lib/images/star_map.svg";
+
 </script>
 
-<body style="
-  padding: 0px;
-  margin: 0px;
-  background-color: black;
-  ">
-  <div id="background_image_container">
-    <img id="star_map" src={star_map} alt="Background Star" />
-  </div>
-  <div id="header_container">
+<body style="background-image: url({star_map});">
+  <nav id="header_container">
     <Header />
-  </div>
+  </nav>
+  <slot />
 </body>
 
 <style>
-#star_map {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: black;
+  background-size: 100%;
 }
-#background_image_container {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-}
+
 #header_container {
-  position: fixed;
+  width: 100%;
+  position: sticky;
 }
 </style>

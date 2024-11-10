@@ -3,7 +3,8 @@
     "buttons": {
       "about": "About",
       "sponsors": "Sponsors",
-      "FAQ": "FAQ"
+      "FAQ": "FAQ",
+      "register": "Register"
     }
   }
 }
