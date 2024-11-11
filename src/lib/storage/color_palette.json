@@ -16,6 +16,13 @@
     }
   },
   "pages": {
-
+    "home": {
+      "title": {
+        "text": "#000000",
+        "shadow": "#AAAAAA",
+        "stroke": "#FFFFFF",
+        "font": "GeneralSans-Bold"
+      }
+    }
   }
 }

@@ -143,12 +143,16 @@ button {
 
 p {
   color: var(--text_color);
+
   margin-top: var(--text_margin_height);
   margin-bottom: var(--text_margin_height);
+
   margin-left: var(--text_margin_width);
   margin-right: var(--text_margin_width);
+
   padding-top: var(--text_margin_height);
   padding-bottom: var(--text_margin_height);
+
   padding-left: var(--text_margin_width);
   padding-right: var(--text_margin_width);
 }
