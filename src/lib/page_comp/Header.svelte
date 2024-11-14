@@ -32,6 +32,16 @@
   };
 
   let clientWidth = 0;
+  let dropListTriggered = false;
+  
+  function mtb_width() {
+    if (clientWidth < CST.sizes.mob_width) {
+      return 100;
+    }
+    return 0.075 * clientWidth;
+  }
+
+  $: console.log(clientWidth)
 </script>
 
 <!-- Outermost container which allows overflowing -->
@@ -92,6 +102,7 @@
   </div>
 
   <div id="nav_bar_right">
+
     {#if clientWidth > CST.sizes.mob_width}
     <div id="nav_button_list_2">
       <Button color_theme={COLORS.button.type_blue}
@@ -103,9 +114,16 @@
       />
     </div>
     {/if}
-    <div id="mtb_container">
+
+    <div id="mtb_container"
+      style="
+          padding-right: {(clientWidth > CST.sizes.mob_width ? 50 : 0) + 'px'};
+      "
+    >
       <a id="mlh-trust-badge"
-        style="width: {0.075 * clientWidth + 'px'};"
+        style="
+          width: {mtb_width() + 'px'};
+        "
         href={URL.page_comp.header.mlh_trust_badge.href}
         target="_blank"
       >
@@ -115,8 +133,29 @@
         >
       </a>
     </div>
+
     {#if clientWidth < CST.sizes.mob_width}
-    <div id="drop_list_container">
+    <div id="drop_list_container"
+      style="
+        padding: {('0px ' + 20 * clientWidth / CST.sizes.mob_width + 'px ').repeat(2)};
+      "
+    >
+      <button id="drop_list_trigger"
+        on:click={() => {
+          dropListTriggered = dropListTriggered ? false : true;
+        }}
+      >
+      {#if dropListTriggered}
+        ≡
+      {:else}
+        ×
+      {/if}
+      </button>
+
+      {#if dropListTriggered}
+      <div id="drop_list"></div>
+      {/if}
+
     </div>
     {/if}
   </div>
@@ -188,8 +227,6 @@
 #mtb_container {
   height: 0px;
   vertical-align: top;
-  padding-right: 50px;
-  padding-left: 20px;
   overflow-y: visible;
 }
 
@@ -197,5 +234,19 @@
   display: block;
   max-width: 150px;
   min-width: 60px;
+}
+
+#drop_list_container {
+  align-content: center;
+  justify-content: center;
+}
+
+#drop_list_trigger {
+  margin: 0px;
+  padding: 0px;
+  color: white;
+  font-size: 60px;
+  background:rgba(255, 255, 255, 0);
+  border-width: 0px;
 }
 </style>

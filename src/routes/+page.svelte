@@ -2,10 +2,12 @@
 // color palette
 import color_json from "$lib/storage/color_palette.json";
 import constants_json from "$lib/storage/constants.json";
+import duck_logo_img from "$lib/images/duck_logo.png";
 const CST = constants_json;
 let clientWidth = 0;
 let title_font_size = 0;
 let shadow_size = 0;
+let duck_logo = duck_logo_img;
 $: {
   if (clientWidth > CST.sizes.mob_width) {}
   title_font_size = 140 * clientWidth / 1920;
@@ -18,7 +20,13 @@ const COLOR = color_json;
   <title>MariHacks</title>
 </svelte:head>
 
-<div bind:clientWidth={clientWidth} id="sec_title" style="display: flex; size: 100%;">
+<!-- sec stands for section -->
+<div bind:clientWidth={clientWidth}
+  id="sec_title"
+  style="
+    width: {clientWidth > CST.sizes.mob_width ? 100 : 80 + '%'};
+  "
+>
   <div id="sec_title_left">
     <p style="
       color: {COLOR.pages.home.title.text};
@@ -34,9 +42,7 @@ const COLOR = color_json;
   </div>
 
   <div id="sec_title_right">
-    <p style="color: white; font-size: {title_font_size + 'px'}">
-      DUCK<br>COMPUTER
-    </p>
+    <img src={duck_logo} alt="MariHacks duck logo" />
   </div>
 
 </div>
@@ -62,4 +68,8 @@ const COLOR = color_json;
 </div>
 
 <style>
+#sec_title {
+  display: flex;
+  justify-self: center;
+}
 </style>
