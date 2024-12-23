@@ -8,6 +8,7 @@
 
   // Text on the button
   export let text_val;
+  export let text_wrapping = false;
 
   // Using color theme to set colors
   export let color_theme = colors.button.type_blue;
@@ -93,6 +94,7 @@
         --text_color: {text_color};
         --text_margin_width: {size_info.text_margin_width};
         --text_margin_height: {size_info.text_margin_height};
+        --text_wrapping: {text_wrapping ? "wrap" : "nowrap"};
       "
     >
       {text_val}
@@ -143,6 +145,8 @@ button {
 
 p {
   color: var(--text_color);
+
+  text-wrap: var(--text_wrapping);
 
   margin-top: var(--text_margin_height);
   margin-bottom: var(--text_margin_height);

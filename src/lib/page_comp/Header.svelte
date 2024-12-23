@@ -146,9 +146,9 @@
         }}
       >
       {#if dropListTriggered}
-        ≡
-      {:else}
         ×
+      {:else}
+        ≡
       {/if}
       </button>
 

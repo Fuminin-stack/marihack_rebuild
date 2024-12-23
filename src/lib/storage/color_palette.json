@@ -13,6 +13,13 @@
       "text": "#FFFFFF",
       "hover": "#081E74",
       "font": "GeneralSans-Medium"
+    },
+    "type_yellow_nohover": {
+      "base": "#FFE03B",
+      "border": "#8C7B20",
+      "text": "#000000",
+      "hover": "#FFE03B",
+      "font": "GeneralSans-Bold"
     }
   },
   "pages": {
