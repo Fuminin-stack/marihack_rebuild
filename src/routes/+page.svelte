@@ -13,9 +13,13 @@ let clientWidth = 0;
 let title_font_size = 0;
 let shadow_size = 0;
 $: {
-  if (clientWidth > CST.sizes.mob_width) {}
-  title_font_size = 250 * clientWidth / 1920;
-  shadow_size = 8 * clientWidth / 1920;
+  if (clientWidth > CST.sizes.mob_width) {
+    title_font_size = 250 * clientWidth / 1920;
+    shadow_size = 8 * clientWidth / 1920;
+  } else {
+    title_font_size = clientWidth / 4;
+    shadow_size = clientWidth / 100;
+  }
 }
 </script>
 
@@ -28,6 +32,7 @@ $: {
 <div bind:clientWidth={clientWidth}
   id="sec_title"
   style="
+    display: {clientWidth > CST.sizes.mob_width ? "flex" : "grid"};
     width: {clientWidth > CST.sizes.mob_width ? 100 : 80 + '%'};
   "
 >
@@ -49,7 +54,7 @@ $: {
       color_theme={COLOR.button.type_yellow_nohover}
       enable={false}
       size_info={{
-        text: "30px",
+        text: (clientWidth > CST.sizes.mob_width ? "30px" : "10px"),
         text_margin_width: "8px",
         text_margin_height: "8px",
         hitbox_width: "220px",
@@ -62,7 +67,6 @@ $: {
   <div id="sec_title_right">
     <img id="duck_logo" src={duck_logo} alt="MariHacks duck logo" />
   </div>
-
 </div>
 
 <div id="sec_about">
@@ -93,7 +97,6 @@ $: {
 }
 
 #sec_title {
-  display: flex;
   justify-self: center;
   align-items: center;
 }

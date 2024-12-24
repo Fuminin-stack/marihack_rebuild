@@ -33,15 +33,7 @@
 
   let clientWidth = 0;
   let dropListTriggered = false;
-  
-  function mtb_width() {
-    if (clientWidth < CST.sizes.mob_width) {
-      return 100;
-    }
-    return 0.075 * clientWidth;
-  }
 
-  $: console.log(clientWidth)
 </script>
 
 <!-- Outermost container which allows overflowing -->
@@ -50,7 +42,13 @@
   <div id="nav_bar" style="background-image: url({star_map});">
 
   <div id="nav_bar_left">
-    <img id="marihack_logo" class="self-centered" src={marihack_logo} alt="Marihack Logo"/>
+    <img
+      id="marihack_logo"
+      class="self-centered"
+      src={marihack_logo}
+      alt="Marihack Logo"
+      style={"height: " + (clientWidth > CST.sizes.mob_width ? "100px" : clientWidth / 9 + "px")}
+    />
 
     {#if clientWidth > CST.sizes.mob_width}
     <div id="vertical_line" class="self-centered"></div>
@@ -122,7 +120,7 @@
     >
       <a id="mlh-trust-badge"
         style="
-          width: {mtb_width() + 'px'};
+          width: {clientWidth / 12 + 'px'};
         "
         href={URL.page_comp.header.mlh_trust_badge.href}
         target="_blank"
@@ -204,8 +202,8 @@
 }
 
 #marihack_logo {
-  height: 100px;
   width: auto;
+  min-height: 75px;
   padding: 4px;
 }
 
@@ -233,7 +231,7 @@
 #mlh-trust-badge {
   display: block;
   max-width: 150px;
-  min-width: 60px;
+  min-width: 75px;
 }
 
 #drop_list_container {
@@ -245,7 +243,7 @@
   margin: 0px;
   padding: 0px;
   color: white;
-  font-size: 60px;
+  font-size: 45px;
   background:rgba(255, 255, 255, 0);
   border-width: 0px;
 }
