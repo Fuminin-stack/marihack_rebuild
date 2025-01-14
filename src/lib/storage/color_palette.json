@@ -29,6 +29,13 @@
         "shadow": "#AAAAAA",
         "stroke": "#FFFFFF",
         "font": "GeneralSans-Bold"
+      },
+      "secondary_title": {
+        "main_text": "#FFFFFF",
+        "main_font": "17px",
+        "sub_font": "15px",
+        "sub_text": "#999999",
+        "font": "GeneralSans-Medium"
       }
     }
   }

@@ -36,8 +36,9 @@ $: {
     width: {clientWidth > CST.sizes.mob_width ? 100 : 80 + '%'};
   "
 >
-  <div id="sec_title_left">
-    <p style="
+  <div id={clientWidth > CST.sizes.mob_width ? "sec_title_left" : "sec_title_left_mob"}>
+    <p id={clientWidth > CST.sizes.mob_width ? "title" : "title_mob"}
+      style="
       color: {COLOR.pages.home.title.text};
       text-shadow: {shadow_size}px {shadow_size}px 0px {COLOR.pages.home.title.shadow};
       -webkit-text-stroke-width: 2px;
@@ -54,14 +55,33 @@ $: {
       color_theme={COLOR.button.type_yellow_nohover}
       enable={false}
       size_info={{
-        text: (clientWidth > CST.sizes.mob_width ? "30px" : "10px"),
-        text_margin_width: "8px",
-        text_margin_height: "8px",
-        hitbox_width: "220px",
-        hitbox_height: "80px",
-        border_radius: "20px",
+        text: (clientWidth > CST.sizes.mob_width ? "30px" : "20px"),
+        text_margin_width: (clientWidth > CST.sizes.mob_width ? "8px" : "4px"),
+        text_margin_height: (clientWidth > CST.sizes.mob_width ? "4px" : "4px"),
+        hitbox_width: (clientWidth > CST.sizes.mob_width ? "260px" : "160px"),
+        hitbox_height: "40px",
+        border_radius: "18px",
       }}
     />
+    <hr style="width: 100%; margin-top: 15px;"/>
+    <p id={clientWidth > CST.sizes.mob_width ? "secondary_title_main" : "secondary_title_main_mob"}
+      style="
+      color: {COLOR.pages.home.secondary_title.main_text};
+      font-family: {COLOR.pages.home.secondary_title.font};
+      font-size: {COLOR.pages.home.secondary_title.main_font};
+      margin: 0px;
+    ">
+      {TXT.sec_title.time_description}
+    </p>
+    <p id={clientWidth > CST.sizes.mob_width ? "secondary_title_sub" : "secondary_title_sub_mob"}
+      style="
+      color: {COLOR.pages.home.secondary_title.sub_text};
+      font-family: {COLOR.pages.home.secondary_title.font};
+      font-size: {COLOR.pages.home.secondary_title.sub_font};
+      margin: 0px;
+    ">
+      {TXT.sec_title.location_description}
+    </p>
   </div>
 
   <div id="sec_title_right">
@@ -96,6 +116,10 @@ $: {
   display: grid;
 }
 
+#title_mob {
+  text-align: center;
+}
+
 #sec_title {
   justify-self: center;
   align-items: center;
@@ -103,6 +127,12 @@ $: {
 
 #sec_title_left {
   display: grid;
+  justify-items: left;
+}
+
+#sec_title_left_mob {
+  display: grid;
+  justify-items: center;
 }
 
 #duck_logo {

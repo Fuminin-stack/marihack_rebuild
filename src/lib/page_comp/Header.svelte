@@ -31,6 +31,15 @@
     border_radius: "17px",
   };
 
+  const DROP_LIST_BUTTON_PARA = {
+    text: "16px",
+    text_margin_width: "8px",
+    text_margin_height: "5px",
+    hitbox_width: "140px",
+    hitbox_height: "80px",
+    border_radius: "17px",
+  }
+
   let clientWidth = 0;
   let dropListTriggered = false;
 
@@ -133,7 +142,7 @@
     </div>
 
     {#if clientWidth < CST.sizes.mob_width}
-    <div id="drop_list_container"
+    <div id="drop_list_trigger_container"
       style="
         padding: {('0px ' + 20 * clientWidth / CST.sizes.mob_width + 'px ').repeat(2)};
       "
@@ -150,15 +159,68 @@
       {/if}
       </button>
 
-      {#if dropListTriggered}
-      <div id="drop_list"></div>
-      {/if}
-
     </div>
     {/if}
   </div>
 
   </div>
+
+  {#if dropListTriggered && (clientWidth < CST.sizes.mob_width)}
+  <div id="drop_list_container" style="height: 0px;">
+    <div id="drop_list" style="justify-items: center;">
+      <Button color_theme={COLORS.button.type_black}
+        text_val={TEXT.nav_bar.buttons.about}
+        size_info={DROP_LIST_BUTTON_PARA}
+        react={() => {
+          const anchor = document.getElementById("sec_about");
+          if (anchor != null) {
+            window.scrollTo({
+              top: anchor.offsetTop,
+			        behavior: 'smooth'});
+          } else {
+            window.location.assign("/#sec_about");
+          }
+        }}
+      />
+      <Button color_theme={COLORS.button.type_black}
+        text_val={TEXT.nav_bar.buttons.sponsors}
+        size_info={DROP_LIST_BUTTON_PARA}
+        react={() => {
+          const anchor = document.getElementById("sec_sponsors");
+          if (anchor != null) {
+            window.scrollTo({
+              top: anchor.offsetTop,
+			        behavior: 'smooth'});
+          } else {
+            window.location.assign("/#sec_sponsors");
+          }
+        }}
+      />
+      <Button color_theme={COLORS.button.type_black}
+        text_val={TEXT.nav_bar.buttons.FAQ}
+        size_info={DROP_LIST_BUTTON_PARA}
+        react={() => {
+          const anchor = document.getElementById("sec_FAQ");
+          if (anchor != null) {
+            window.scrollTo({
+              top: anchor.offsetTop,
+			        behavior: 'smooth'});
+          } else {
+            window.location.assign("/#sec_FAQ");
+          }
+        }}
+      />
+      <Button color_theme={COLORS.button.type_blue}
+        text_val={TEXT.nav_bar.buttons.register}
+        size_info={BUTTON_PARA}
+        react={() => {
+        }}
+        enable={false}
+      />
+    </div>
+  </div>
+  {/if}
+
 </div>
 
 <style>
@@ -234,9 +296,14 @@
   min-width: 75px;
 }
 
-#drop_list_container {
-  align-content: center;
+#drop_list_trigger_container {
+  align-content: start;
   justify-content: center;
+}
+
+#drop_list {
+  display: grid;
+  background-color: rgba(0, 0, 0, 0.90);
 }
 
 #drop_list_trigger {
