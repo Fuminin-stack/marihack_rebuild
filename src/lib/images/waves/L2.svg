@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="40mm"
+   viewBox="0 0 297 40"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="L2.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="1007.0681"
+     inkscape:cy="-83.712469"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     units="in" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#6783be;fill-opacity:1;stroke:none;stroke-width:0.19349px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M -9.2168649,7.9256736 C 3.8793419,6.3533837 3.6070877,1.623628 19.113705,1.4524351 41.16429,1.2089969 43.44805,8.7157597 57.065977,8.3996897 70.129759,8.0964797 76.521504,3.3039568 99.561825,2.8213973 114.68264,2.504705 118.78135,7.2048936 132.56649,7.2416833 c 18.64622,0.049763 20.93433,-3.7658503 32.27396,-4.4289841 8.93868,-0.5227282 13.08805,4.8482805 25.84686,4.4878771 10.74508,-0.3035206 14.54097,-2.0207111 22.85396,-2.0768574 9.9874,-0.067455 13.41771,2.6837261 26.96101,2.4726475 14.58062,-0.2272459 22.20442,-2.7881737 33.18564,-3.4090948 20.46993,-1.1574496 27.52877,0.3810828 34.07687,3.9734554 2.03974,1.1190286 4.00903,34.312488 4.00903,34.312488 H -15.096794 Z"
+       id="path833"
+       sodipodi:nodetypes="cssssssssssccc" />
+  </g>
+</svg>

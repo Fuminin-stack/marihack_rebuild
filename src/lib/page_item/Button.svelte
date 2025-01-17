@@ -3,7 +3,7 @@
 -->
 
 <script>
-  import colors from "$lib/storage/color_palette.json"
+  import colors from "$lib/storage/color_palette.json";
   import { tweened } from "svelte/motion";
 
   // Text on the button
@@ -50,22 +50,21 @@
   });
 
   if (!enable) {
-    _opacity = 0.60;
+    _opacity = 0.6;
   }
 </script>
 
-<div id="hitbox" 
+<div
+  id="hitbox"
   style="
     --hitbox_width: {size_info.hitbox_width};
     --hitbox_height: {size_info.hitbox_height};
   "
-  >
-<div id="anchor"
-  style="--display_mode: {_anchor_display};"
-  >
-  <!-- style in <style> can not be updated as a variable -->
-  <button
-    style="
+>
+  <div id="anchor" style="--display_mode: {_anchor_display};">
+    <!-- style in <style> can not be updated as a variable -->
+    <button
+      style="
       --font: {font};
       --text_size: {size_info.text};
       --outline_color: {outline_color};
@@ -74,91 +73,88 @@
       --_opacity: {_opacity};
       --border_radius: {size_info.border_radius};
     "
-
-    on:focus={() => {}}
-    on:click={react}
-    on:mouseenter={() => {
-      if (!enable) return;
-      _border.set(1);
-      _color = color_on_hover;
-    }}
-    on:mouseleave={() => {
-      if (!enable) return;
-      _border.set(4);
-      _color = color;
-    }}
-  >
-    
-    <p
-      style="
+      on:focus={() => {}}
+      on:click={react}
+      on:mouseenter={() => {
+        if (!enable) return;
+        _border.set(1);
+        _color = color_on_hover;
+      }}
+      on:mouseleave={() => {
+        if (!enable) return;
+        _border.set(4);
+        _color = color;
+      }}
+    >
+      <p
+        style="
         --text_color: {text_color};
         --text_margin_width: {size_info.text_margin_width};
         --text_margin_height: {size_info.text_margin_height};
-        --text_wrapping: {text_wrapping ? "wrap" : "nowrap"};
+        --text_wrapping: {text_wrapping ? 'wrap' : 'nowrap'};
       "
-    >
-      {text_val}
-    </p>
-  
-  </button>
+      >
+        {text_val}
+      </p>
+    </button>
+  </div>
 </div>
-</div>
+
 <style>
-#hitbox {
-  width: var(--hitbox_width);
-  height: var(--hitbox_height);
-}
+  #hitbox {
+    width: var(--hitbox_width);
+    height: var(--hitbox_height);
+  }
 
-#anchor {
-  position: relative;
-  top: 50%;
-  left: 50%;
+  #anchor {
+    position: relative;
+    top: 50%;
+    left: 50%;
 
-  width: 1px;
-  height: 1px;
-  overflow: visible;
+    width: 1px;
+    height: 1px;
+    overflow: visible;
 
-  display: grid;
-  justify-content: center;
-  align-content: center;
-}
+    display: grid;
+    justify-content: center;
+    align-content: center;
+  }
 
-button {
-  position: relative;
+  button {
+    position: relative;
 
-  font-family: var(--font);
-  font-size: var(--text_size);
+    font-family: var(--font);
+    font-size: var(--text_size);
 
-  background-color: var(--_color);
+    background-color: var(--_color);
 
-  border-radius: var(--border_radius);
-  border-style: solid;
-  border-width: 1px;
-  border-color: var(--outline_color);
-  border-right-width: var(--_border);
-  border-bottom-width: var(--_border);
-  right: var(--_border);
-  bottom: var(--_border);
+    border-radius: var(--border_radius);
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--outline_color);
+    border-right-width: var(--_border);
+    border-bottom-width: var(--_border);
+    right: var(--_border);
+    bottom: var(--_border);
 
-  opacity: var(--_opacity);
-}
+    opacity: var(--_opacity);
+  }
 
-p {
-  color: var(--text_color);
+  p {
+    color: var(--text_color);
 
-  text-wrap: var(--text_wrapping);
+    text-wrap: var(--text_wrapping);
 
-  margin-top: var(--text_margin_height);
-  margin-bottom: var(--text_margin_height);
+    margin-top: var(--text_margin_height);
+    margin-bottom: var(--text_margin_height);
 
-  margin-left: var(--text_margin_width);
-  margin-right: var(--text_margin_width);
+    margin-left: var(--text_margin_width);
+    margin-right: var(--text_margin_width);
 
-  padding-top: var(--text_margin_height);
-  padding-bottom: var(--text_margin_height);
+    padding-top: var(--text_margin_height);
+    padding-bottom: var(--text_margin_height);
 
-  padding-left: var(--text_margin_width);
-  padding-right: var(--text_margin_width);
-}
-
+    padding-left: var(--text_margin_width);
+    padding-right: var(--text_margin_width);
+  }
 </style>

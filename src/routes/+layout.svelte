@@ -5,7 +5,7 @@
   /* load page components */
   import Header from "$lib/page_comp/Header.svelte";
 
-  import constants_json from "$lib/storage/constants.json"
+  import constants_json from "$lib/storage/constants.json";
 
   import star_map from "$lib/images/star_map.svg";
 
@@ -20,17 +20,17 @@
 </body>
 
 <style>
-body {
-  padding: 0px;
-  margin: 0px;
-  background-color: black;
-  background-size: 100%;
-  background-attachment: fixed;
-}
+  body {
+    padding: 0px;
+    margin: 0px;
+    background-color: black;
+    background-size: 100%;
+    background-attachment: fixed;
+  }
 
-#header_container {
-  width: 100%;
-  position: sticky;
-  top: 0px;
-}
+  #header_container {
+    width: 100%;
+    position: sticky;
+    top: 0px;
+  }
 </style>

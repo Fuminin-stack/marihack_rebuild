@@ -1,26 +1,55 @@
 <script>
-import color_json from "$lib/storage/color_palette.json";
-import constants_json from "$lib/storage/constants.json";
-import duck_logo_img from "$lib/images/duck_logo.png";
-import text_json from "$lib/storage/pages_info/home.json";
-import Button from "$lib/page_item/Button.svelte";
-const TXT = text_json; 
-const COLOR = color_json;
-const CST = constants_json;
-const duck_logo = duck_logo_img;
+  import color_json from "$lib/storage/color_palette.json";
+  import constants_json from "$lib/storage/constants.json";
+  import duck_logo_img from "$lib/images/duck_logo.png";
+  import text_json from "$lib/storage/pages_info/home.json";
+  import wave_1 from "$lib/images/waves/L1.svg";
+  import wave_2 from "$lib/images/waves/L2.svg";
+  import wave_3 from "$lib/images/waves/L3.svg";
+  import Button from "$lib/page_item/Button.svelte";
+  import { onMount } from "svelte";
 
-let clientWidth = 0;
-let title_font_size = 0;
-let shadow_size = 0;
-$: {
-  if (clientWidth > CST.sizes.mob_width) {
-    title_font_size = 250 * clientWidth / 1920;
-    shadow_size = 8 * clientWidth / 1920;
-  } else {
-    title_font_size = clientWidth / 4;
-    shadow_size = clientWidth / 100;
+  const TXT = text_json;
+  const COLOR = color_json;
+  const CST = constants_json;
+  const duck_logo = duck_logo_img;
+
+  let clientWidth = 0;
+  let title_font_size = 0;
+  let shadow_size = 0;
+
+  $: {
+    if (clientWidth > CST.sizes.mob_width) {
+      title_font_size = (250 * clientWidth) / 1920;
+      shadow_size = (8 * clientWidth) / 1920;
+    } else {
+      title_font_size = clientWidth / 4;
+      shadow_size = clientWidth / 100;
+    }
   }
-}
+  function waveEffect() {
+    let scrollTop = window.scrollY;
+    let w2 = document.getElementById("wave_layer_2");
+    let w3 = document.getElementById("wave_layer_3");
+    if (w2 != null) {
+      let scroll = -scrollTop * 0.3;
+      scroll = scroll < -90 ? -90 : scroll;
+      w2.style.transform = "translateY(" + scroll + "px)";
+    }
+    if (w3 != null) {
+      let scroll = -scrollTop * 0.3;
+      scroll = scroll < -180 ? -180 : scroll;
+      w3.style.transform = "translateY(" + scroll + "px)";
+    }
+  }
+  onMount(() => {
+    window.addEventListener("scroll", waveEffect);
+
+    // Clean up the event listener when the component is destroyed
+    return () => {
+      window.removeEventListener("scroll", waveEffect);
+    };
+  });
 </script>
 
 <svelte:head>
@@ -28,19 +57,26 @@ $: {
 </svelte:head>
 
 <div id="page_container">
-<!-- sec stands for section -->
-<div bind:clientWidth={clientWidth}
-  id="sec_title"
-  style="
-    display: {clientWidth > CST.sizes.mob_width ? "flex" : "grid"};
+  <!-- sec stands for section -->
+  <div
+    bind:clientWidth
+    id="sec_title"
+    style="
+    display: {clientWidth > CST.sizes.mob_width ? 'flex' : 'grid'};
     width: {clientWidth > CST.sizes.mob_width ? 100 : 80 + '%'};
   "
->
-  <div id={clientWidth > CST.sizes.mob_width ? "sec_title_left" : "sec_title_left_mob"}>
-    <p id={clientWidth > CST.sizes.mob_width ? "title" : "title_mob"}
-      style="
+  >
+    <div
+      id={clientWidth > CST.sizes.mob_width
+        ? "sec_title_left"
+        : "sec_title_left_mob"}
+    >
+      <p
+        id={clientWidth > CST.sizes.mob_width ? "title" : "title_mob"}
+        style="
       color: {COLOR.pages.home.title.text};
-      text-shadow: {shadow_size}px {shadow_size}px 0px {COLOR.pages.home.title.shadow};
+      text-shadow: {shadow_size}px {shadow_size}px 0px {COLOR.pages.home.title
+          .shadow};
       -webkit-text-stroke-width: 2px;
       -webkit-text-stroke-color: {COLOR.pages.home.title.stroke};
       font-family: {COLOR.pages.home.title.font};
@@ -48,94 +84,192 @@ $: {
       line-height: 0.72;
       margin: 40px;
       margin-left: 0px;
-    ">
-      MARI<br>HACKS
-    </p>
-    <Button text_val={TXT.sec_title.on_tune}
-      color_theme={COLOR.button.type_yellow_nohover}
-      enable={false}
-      size_info={{
-        text: (clientWidth > CST.sizes.mob_width ? "30px" : "20px"),
-        text_margin_width: (clientWidth > CST.sizes.mob_width ? "8px" : "4px"),
-        text_margin_height: (clientWidth > CST.sizes.mob_width ? "4px" : "4px"),
-        hitbox_width: (clientWidth > CST.sizes.mob_width ? "260px" : "160px"),
-        hitbox_height: "40px",
-        border_radius: "18px",
-      }}
-    />
-    <hr style="width: 100%; margin-top: 15px;"/>
-    <p id={clientWidth > CST.sizes.mob_width ? "secondary_title_main" : "secondary_title_main_mob"}
-      style="
+      margin-right: 0px;
+    "
+      >
+        MARI<br />HACKS
+      </p>
+      <Button
+        text_val={TXT.sec_title.on_tune}
+        color_theme={COLOR.button.type_yellow_nohover}
+        enable={false}
+        size_info={{
+          text: clientWidth > CST.sizes.mob_width ? "30px" : "20px",
+          text_margin_width: clientWidth > CST.sizes.mob_width ? "8px" : "4px",
+          text_margin_height: clientWidth > CST.sizes.mob_width ? "4px" : "4px",
+          hitbox_width: clientWidth > CST.sizes.mob_width ? "260px" : "160px",
+          hitbox_height: "40px",
+          border_radius: "18px",
+        }}
+      />
+      <hr style="width: 100%; margin-top: 15px;" />
+      <p
+        id={clientWidth > CST.sizes.mob_width
+          ? "secondary_title_main"
+          : "secondary_title_main_mob"}
+        style="
       color: {COLOR.pages.home.secondary_title.main_text};
       font-family: {COLOR.pages.home.secondary_title.font};
-      font-size: {COLOR.pages.home.secondary_title.main_font};
+      font-size: 18px;
       margin: 0px;
-    ">
-      {TXT.sec_title.time_description}
-    </p>
-    <p id={clientWidth > CST.sizes.mob_width ? "secondary_title_sub" : "secondary_title_sub_mob"}
-      style="
+    "
+      >
+        {TXT.sec_title.time_description}
+      </p>
+      <p
+        id={clientWidth > CST.sizes.mob_width
+          ? "secondary_title_sub"
+          : "secondary_title_sub_mob"}
+        style="
       color: {COLOR.pages.home.secondary_title.sub_text};
       font-family: {COLOR.pages.home.secondary_title.font};
-      font-size: {COLOR.pages.home.secondary_title.sub_font};
+      font-size: {(clientWidth < 360
+          ? (clientWidth / CST.sizes.mob_width) * 40
+          : 16) + 'px'};
       margin: 0px;
-    ">
-      {TXT.sec_title.location_description}
-    </p>
+    "
+      >
+        {TXT.sec_title.location_description}
+      </p>
+    </div>
+
+    <div id="sec_title_right">
+      <img id="duck_logo" src={duck_logo} alt="MariHacks duck logo" />
+    </div>
   </div>
 
-  <div id="sec_title_right">
-    <img id="duck_logo" src={duck_logo} alt="MariHacks duck logo" />
+  <div
+    id="wave_layers"
+    style="
+      height: {clientWidth * 0.11}px;
+    "
+  >
+    <div
+      id="wave_layer_1"
+      class="wave_layer"
+      style="bottom: {clientWidth * 0.09}px;"
+    >
+      <img id="wave_layer_1_svg" src={wave_1} alt="First Layer of Wave" />
+    </div>
+    <div
+      id="wave_layer_2"
+      class="wave_layer"
+      style="bottom: {clientWidth * 0.073}px;"
+    >
+      <img id="wave_layer_2_svg" src={wave_2} alt="Second Layer of Wave" />
+    </div>
+    <div
+      id="wave_layer_3"
+      class="wave_layer"
+      style="bottom: {clientWidth * 0.05}px;"
+    >
+      <img id="wave_layer_3_svg" src={wave_3} alt="Third Layer of Wave" />
+    </div>
   </div>
-</div>
-
-<div id="sec_about">
-  <p style="color: white; font-size: 100px">
-    ABOUT<br>
-    ABOUT<br>
-    ABOUT<br>
-    ABOUT<br>
-    ABOUT<br>
-    ABOUT<br>
-    ABOUT<br>
-  </p>
-</div>
-
-<div id="sec_sponsors">
-
-</div>
-
-<div id="sec_FAQ">
-
-</div>
-
+  <div
+    id="grouped_section"
+    style="background-color: {COLOR.pages.home.grouped_section.bg_color};"
+  >
+    <div id="sec_about"></div>
+    <h1>ABOUT</h1>
+    <div id="sec_sponsors"></div>
+    <h1>SPONSORS</h1>
+    <div id="sec_FAQ"></div>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+    <h1>FAQ</h1>
+  </div>
 </div>
 
 <style>
-#page_container {
-  display: grid;
-}
+  #page_container {
+    display: grid;
+  }
 
-#title_mob {
-  text-align: center;
-}
+  #title_mob {
+    text-align: center;
+  }
 
-#sec_title {
-  justify-self: center;
-  align-items: center;
-}
+  #sec_title {
+    justify-self: center;
+    align-items: center;
+  }
 
-#sec_title_left {
-  display: grid;
-  justify-items: left;
-}
+  #sec_title_left {
+    display: grid;
+    justify-items: left;
+  }
 
-#sec_title_left_mob {
-  display: grid;
-  justify-items: center;
-}
+  #sec_title_left_mob {
+    display: grid;
+    justify-items: center;
+  }
 
-#duck_logo {
-  width: 100%;
-}
+  #duck_logo {
+    width: 100%;
+  }
+
+  #wave_layers {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .wave_layer {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 0px;
+    overflow: visible;
+    line-height: 0px;
+  }
+
+  #wave_layer_1_svg {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+  }
+
+  #wave_layer_2_svg {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+  }
+
+  #wave_layer_3_svg {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+  }
 </style>
