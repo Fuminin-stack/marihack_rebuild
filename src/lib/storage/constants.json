@@ -7,5 +7,10 @@
   },
   "sizes": {
     "mob_width": 900
+  },
+  "wave_effect": {
+    "layer1": 0.1,
+    "layer2": 0.075,
+    "layer3": 0.05
   }
 }

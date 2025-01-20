@@ -29,16 +29,18 @@
   }
   function waveEffect() {
     let scrollTop = window.scrollY;
+    let wd2 = clientWidth * (CST.wave_effect.layer1 - CST.wave_effect.layer2);
+    let wd3 = clientWidth * (CST.wave_effect.layer1 - CST.wave_effect.layer3);
     let w2 = document.getElementById("wave_layer_2");
     let w3 = document.getElementById("wave_layer_3");
     if (w2 != null) {
-      let scroll = -scrollTop * 0.3;
-      scroll = scroll < -90 ? -90 : scroll;
+      let scroll = -scrollTop * 0.06;
+      scroll = scroll < -wd2 ? -wd2 : scroll;
       w2.style.transform = "translateY(" + scroll + "px)";
     }
     if (w3 != null) {
-      let scroll = -scrollTop * 0.3;
-      scroll = scroll < -180 ? -180 : scroll;
+      let scroll = -scrollTop * 0.1;
+      scroll = scroll < -wd3 ? -wd3 : scroll;
       w3.style.transform = "translateY(" + scroll + "px)";
     }
   }
@@ -141,27 +143,27 @@
   <div
     id="wave_layers"
     style="
-      height: {clientWidth * 0.11}px;
+      height: {clientWidth * CST.wave_effect.layer1}px;
     "
   >
     <div
       id="wave_layer_1"
       class="wave_layer"
-      style="bottom: {clientWidth * 0.09}px;"
+      style="bottom: {clientWidth * CST.wave_effect.layer1}px;"
     >
       <img id="wave_layer_1_svg" src={wave_1} alt="First Layer of Wave" />
     </div>
     <div
       id="wave_layer_2"
       class="wave_layer"
-      style="bottom: {clientWidth * 0.073}px;"
+      style="bottom: {clientWidth * CST.wave_effect.layer2}px;"
     >
       <img id="wave_layer_2_svg" src={wave_2} alt="Second Layer of Wave" />
     </div>
     <div
       id="wave_layer_3"
       class="wave_layer"
-      style="bottom: {clientWidth * 0.05}px;"
+      style="bottom: {clientWidth * CST.wave_effect.layer3}px;"
     >
       <img id="wave_layer_3_svg" src={wave_3} alt="Third Layer of Wave" />
     </div>

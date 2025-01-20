@@ -9,7 +9,13 @@
 
   import star_map from "$lib/images/star_map.svg";
 
+  import { onMount } from "svelte";
+
   let Z = constants_json.z;
+
+  onMount(() => {
+    return () => {};
+  });
 </script>
 
 <body style="background-image: url({star_map});">
