@@ -48,7 +48,7 @@
 </script>
 
 <!-- Outermost container which allows overflowing -->
-<div bind:clientWidth id="outer_container">
+<div bind:clientWidth id="header_container">
   <!-- Navigation Bar -->
   <div id="nav_bar" style="background-image: url({star_map});">
     <div id="nav_bar_left">
@@ -243,7 +243,7 @@
     align-self: center;
   }
 
-  #outer_container {
+  #header_container {
     width: 100%;
   }
 

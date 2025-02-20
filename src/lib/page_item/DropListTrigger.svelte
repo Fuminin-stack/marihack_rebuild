@@ -1,5 +1,5 @@
 <script>
-  // TO THE GREAT GOD CHATGPT!!!!
+  // With helps from ChatGPT
   let triggered = false;
 
   export let react = () => {};

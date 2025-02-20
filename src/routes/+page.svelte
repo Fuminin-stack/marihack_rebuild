@@ -8,6 +8,7 @@
   import wave_3 from "$lib/images/waves/L3.svg";
   import Button from "$lib/page_item/Button.svelte";
   import { onMount } from "svelte";
+  import TypingKeyBoard from "$lib/page_item/TypingKeyBoard.svelte";
 
   const TXT = text_json;
   const COLOR = color_json;
@@ -172,8 +173,11 @@
     id="grouped_section"
     style="background-color: {COLOR.pages.home.grouped_section.bg_color};"
   >
-    <div id="sec_about"></div>
-    <h1>ABOUT</h1>
+    <div id="sec_about">
+      <div id="typing_effect_text" style="justify-items: center">
+        <TypingKeyBoard />
+      </div>
+    </div>
     <div id="sec_sponsors"></div>
     <h1>SPONSORS</h1>
     <div id="sec_FAQ"></div>
