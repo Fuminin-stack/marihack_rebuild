@@ -114,6 +114,22 @@
               }
             }}
           />
+          <Button
+            color_theme={COLORS.button.type_black}
+            text_val={TEXT.nav_bar.buttons.get_involved}
+            size_info={BUTTON_PARA}
+            react={() => {
+              const anchor = document.getElementById("sec_FAQ");
+              if (anchor != null) {
+                window.scrollTo({
+                  top: anchor.offsetTop,
+                  behavior: "smooth",
+                });
+              } else {
+                window.location.assign("/#sec_FAQ");
+              }
+            }}
+          />
         </div>
       {/if}
     </div>

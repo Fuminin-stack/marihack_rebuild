@@ -8,7 +8,8 @@
   import wave_3 from "$lib/images/waves/L3.svg";
   import Button from "$lib/page_item/Button.svelte";
   import { onMount } from "svelte";
-  import TypingKeyBoard from "$lib/page_item/TypingKeyBoard.svelte";
+  import TypingText from "$lib/page_item/TypingText.svelte";
+  import GeneralContainer from "$lib/page_item/GeneralContainer.svelte";
 
   const TXT = text_json;
   const COLOR = color_json;
@@ -28,6 +29,7 @@
       shadow_size = clientWidth / 100;
     }
   }
+  // for wave effect
   function waveEffect() {
     let scrollTop = window.scrollY;
     let wd2 = clientWidth * (CST.wave_effect.layer1 - CST.wave_effect.layer2);
@@ -174,8 +176,31 @@
     style="background-color: {COLOR.pages.home.grouped_section.bg_color};"
   >
     <div id="sec_about">
-      <div id="typing_effect_text" style="justify-items: center">
-        <TypingKeyBoard />
+      <div id="typing_effect_text">
+        <!--
+          margin: 0 auto is required
+          without it, there will be display bug on ios devices
+          f**k ios
+        -->
+        <div class="tet_hbar" style="margin: 0 auto;" />
+        <TypingText
+          font_size={clientWidth > CST.sizes.mob_width ? 54 : 20}
+          texts={TXT.typing_text}
+        />
+        <div class="tet_hbar" style="margin: 0 auto;" />
+      </div>
+      <div id="marihacks_presentation">
+        <GeneralContainer>
+          <p>
+            {TXT.sec_about.title}
+          </p>
+          <p>
+            {TXT.sec_about.text}
+          </p>
+          <p>
+            {TXT.sec_about.organizer}
+          </p>
+        </GeneralContainer>
       </div>
     </div>
     <div id="sec_sponsors"></div>
@@ -277,5 +302,11 @@
     margin: 0px;
     padding: 0px;
     width: 100%;
+  }
+  .tet_hbar {
+    width: 80%;
+    justify-self: center;
+    background-color: black;
+    height: 2px;
   }
 </style>

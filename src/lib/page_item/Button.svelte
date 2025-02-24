@@ -3,7 +3,7 @@
 -->
 
 <script>
-  import colors from "$lib/storage/color_palette.json";
+  import colors_json from "$lib/storage/color_palette.json";
   import { tweened } from "svelte/motion";
 
   // Text on the button
@@ -11,7 +11,7 @@
   export let text_wrapping = false;
 
   // Using color theme to set colors
-  export let color_theme = colors.button.type_blue;
+  export let color_theme = colors_json.button.type_blue;
   // Color of the button in Hex color code
   export let color = color_theme.base;
   // Color of the button when a mouse hovers above

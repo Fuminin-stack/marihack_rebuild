@@ -3,5 +3,22 @@
     "on_tune": "Stay tuned!",
     "time_description": "April TDB, 2025",
     "location_description": "Marianoplis College | In-person Hackathon"
+  },
+  "typing_text": [
+    "Youth Coding, Future Building.",
+    "Innovations Start Here.",
+    "Crack the Code, Shape the Future.",
+    "Students, Code, Create.",
+    "Challenge Accepted, Code Completed.",
+    "High School, Cegep, Hack On!",
+    "Coding Minds, Changing Game.",
+    "Hack Hard, Learn Fast.",
+    "Young Coders, Big Impact.",
+    "Code. Solve. Repeat."
+  ],
+  "sec_about": {
+    "title": "What is MariHacks?",
+    "text": "MariHacks is Montreal's first and largest 2-day hackathon for CEGEP and High School students. We will bring together over 200 developers and technology enthusiasts to create revolutionary software projects. Meet fellow hackers, learn new technologies, and hone your skills alongside amazing mentors.",
+    "organizer": "Organized by Marianopolis' Programming club."
   }
 }

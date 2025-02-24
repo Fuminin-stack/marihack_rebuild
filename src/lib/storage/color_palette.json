@@ -39,5 +39,13 @@
         "bg_color": "#ddedff"
       }
     }
+  },
+  "typing_key_board": {
+    "default": {
+      "txt_color": "rgb(0, 0, 0)",
+      "cursor_shown": "rgb(0, 0, 0, 1)",
+      "cursor_hidden": "rgb(0, 0, 0, 0)",
+      "font": "GeneralSans-Bold"
+    }
   }
 }
