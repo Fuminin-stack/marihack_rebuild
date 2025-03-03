@@ -1,6 +1,6 @@
 <script>
   // With helps from ChatGPT
-  let triggered = false;
+  export let triggered = false;
 
   export let react = () => {};
 

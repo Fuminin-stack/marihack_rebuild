@@ -1,15 +1,23 @@
 <script>
+  // Color and Constant
   import color_json from "$lib/storage/color_palette.json";
   import constants_json from "$lib/storage/constants.json";
+
+  // Images
   import duck_logo_img from "$lib/images/duck_logo.png";
-  import text_json from "$lib/storage/pages_info/home.json";
   import wave_1 from "$lib/images/waves/L1.svg";
   import wave_2 from "$lib/images/waves/L2.svg";
   import wave_3 from "$lib/images/waves/L3.svg";
-  import Button from "$lib/page_item/Button.svelte";
+
+  // svelte component
   import { onMount } from "svelte";
+  import Button from "$lib/page_item/Button.svelte";
   import TypingText from "$lib/page_item/TypingText.svelte";
   import GeneralContainer from "$lib/page_item/GeneralContainer.svelte";
+
+  // Texts
+  import RichTxtSecAbout from "$lib/storage/pages_info/home/sec_about.svelte";
+  import text_json from "$lib/storage/pages_info/home/home.json";
 
   const TXT = text_json;
   const COLOR = color_json;
@@ -19,9 +27,11 @@
   let clientWidth = 0;
   let title_font_size = 0;
   let shadow_size = 0;
+  $: is_desktop = clientWidth > CST.sizes.mob_width;
 
   $: {
-    if (clientWidth > CST.sizes.mob_width) {
+    // for the title
+    if (is_desktop) {
       title_font_size = (250 * clientWidth) / 1920;
       shadow_size = (8 * clientWidth) / 1920;
     } else {
@@ -67,17 +77,13 @@
     bind:clientWidth
     id="sec_title"
     style="
-    display: {clientWidth > CST.sizes.mob_width ? 'flex' : 'grid'};
-    width: {clientWidth > CST.sizes.mob_width ? 100 : 80 + '%'};
+    display: {is_desktop ? 'flex' : 'grid'};
+    width: {is_desktop ? 100 : 80 + '%'};
   "
   >
-    <div
-      id={clientWidth > CST.sizes.mob_width
-        ? "sec_title_left"
-        : "sec_title_left_mob"}
-    >
+    <div id={is_desktop ? "sec_title_left" : "sec_title_left_mob"}>
       <p
-        id={clientWidth > CST.sizes.mob_width ? "title" : "title_mob"}
+        id={is_desktop ? "title" : "title_mob"}
         style="
       color: {COLOR.pages.home.title.text};
       text-shadow: {shadow_size}px {shadow_size}px 0px {COLOR.pages.home.title
@@ -99,19 +105,17 @@
         color_theme={COLOR.button.type_yellow_nohover}
         enable={false}
         size_info={{
-          text: clientWidth > CST.sizes.mob_width ? "30px" : "20px",
-          text_margin_width: clientWidth > CST.sizes.mob_width ? "8px" : "4px",
-          text_margin_height: clientWidth > CST.sizes.mob_width ? "4px" : "4px",
-          hitbox_width: clientWidth > CST.sizes.mob_width ? "260px" : "160px",
+          text: is_desktop ? "30px" : "20px",
+          text_margin_width: is_desktop ? "8px" : "4px",
+          text_margin_height: is_desktop ? "4px" : "4px",
+          hitbox_width: is_desktop ? "260px" : "160px",
           hitbox_height: "40px",
           border_radius: "18px",
         }}
       />
       <hr style="width: 100%; margin-top: 15px;" />
       <p
-        id={clientWidth > CST.sizes.mob_width
-          ? "secondary_title_main"
-          : "secondary_title_main_mob"}
+        id={is_desktop ? "secondary_title_main" : "secondary_title_main_mob"}
         style="
       color: {COLOR.pages.home.secondary_title.main_text};
       font-family: {COLOR.pages.home.secondary_title.font};
@@ -122,9 +126,7 @@
         {TXT.sec_title.time_description}
       </p>
       <p
-        id={clientWidth > CST.sizes.mob_width
-          ? "secondary_title_sub"
-          : "secondary_title_sub_mob"}
+        id={is_desktop ? "secondary_title_sub" : "secondary_title_sub_mob"}
         style="
       color: {COLOR.pages.home.secondary_title.sub_text};
       font-family: {COLOR.pages.home.secondary_title.font};
@@ -183,24 +185,17 @@
           f**k ios
         -->
         <div class="tet_hbar" style="margin: 0 auto;" />
-        <TypingText
-          font_size={clientWidth > CST.sizes.mob_width ? 54 : 20}
-          texts={TXT.typing_text}
-        />
+        <TypingText font_size={is_desktop ? 54 : 18} texts={TXT.typing_text} />
         <div class="tet_hbar" style="margin: 0 auto;" />
       </div>
-      <div id="marihacks_presentation">
+      <div
+        id="marihacks_presentation"
+        style="margin: 0 auto; {is_desktop ? '' : 'flex-direction: column;'}"
+      >
         <GeneralContainer>
-          <p>
-            {TXT.sec_about.title}
-          </p>
-          <p>
-            {TXT.sec_about.text}
-          </p>
-          <p>
-            {TXT.sec_about.organizer}
-          </p>
+          <RichTxtSecAbout {is_desktop} />
         </GeneralContainer>
+        <GeneralContainer></GeneralContainer>
       </div>
     </div>
     <div id="sec_sponsors"></div>
@@ -308,5 +303,12 @@
     justify-self: center;
     background-color: black;
     height: 2px;
+  }
+
+  #marihacks_presentation {
+    padding: 20px;
+    width: 85%;
+    justify-self: center;
+    display: flex;
   }
 </style>

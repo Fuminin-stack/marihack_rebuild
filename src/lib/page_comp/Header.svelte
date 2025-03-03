@@ -29,7 +29,7 @@
     text: "16px",
     text_margin_width: "8px",
     text_margin_height: "5px",
-    hitbox_width: "140px",
+    hitbox_width: "130px",
     hitbox_height: "80px",
     border_radius: "17px",
   };
@@ -181,6 +181,7 @@
       "
         >
           <DropListTrigger
+            triggered={dropListTriggered}
             react={() => {
               dropListTriggered = !dropListTriggered;
             }}
