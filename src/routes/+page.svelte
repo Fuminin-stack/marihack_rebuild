@@ -13,7 +13,8 @@
   import { onMount } from "svelte";
   import Button from "$lib/page_item/Button.svelte";
   import TypingText from "$lib/page_item/TypingText.svelte";
-  import GeneralContainer from "$lib/page_item/GeneralContainer.svelte";
+  import TextContainer from "$lib/page_item/TextContainer.svelte";
+  import ImgSecPresenter from "$lib/page_comp/home/ImgSecPresenter.svelte";
 
   // Texts
   import RichTxtSecAbout from "$lib/storage/pages_info/home/sec_about.svelte";
@@ -192,10 +193,14 @@
         id="marihacks_presentation"
         style="margin: 0 auto; {is_desktop ? '' : 'flex-direction: column;'}"
       >
-        <GeneralContainer>
-          <RichTxtSecAbout {is_desktop} />
-        </GeneralContainer>
-        <GeneralContainer></GeneralContainer>
+        <div class="marihacks_presentation_child">
+          <TextContainer>
+            <RichTxtSecAbout {is_desktop} />
+          </TextContainer>
+        </div>
+        <div class="marihacks_presentation_child">
+          <ImgSecPresenter />
+        </div>
       </div>
     </div>
     <div id="sec_sponsors"></div>
@@ -308,7 +313,12 @@
   #marihacks_presentation {
     padding: 20px;
     width: 85%;
-    justify-self: center;
     display: flex;
+    justify-self: center;
+    gap: 20px;
+  }
+
+  .marihacks_presentation_child {
+    flex: 1;
   }
 </style>

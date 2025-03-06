@@ -22,6 +22,18 @@
       "font": "GeneralSans-Bold"
     }
   },
+  "general_container_style": {
+    "default": {
+      "color": "white",
+      "b_radius": "25px",
+      "b_style": "solid",
+      "b_width": "1px",
+      "b_color": "#6a78ab",
+      "b_right_width": "5px",
+      "b_bottom_width": "5px",
+      "padding": "0px"
+    }
+  },
   "pages": {
     "home": {
       "title": {
