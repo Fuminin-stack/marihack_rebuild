@@ -14,7 +14,7 @@
   import Button from "$lib/page_item/Button.svelte";
   import TypingText from "$lib/page_item/TypingText.svelte";
   import TextContainer from "$lib/page_item/TextContainer.svelte";
-  import ImgSecPresenter from "$lib/page_comp/home/ImgSecPresenter.svelte";
+  import ImgSecAboutPresenter from "$lib/page_comp/home/ImgSecAboutPresenter.svelte";
 
   // Texts
   import RichTxtSecAbout from "$lib/storage/pages_info/home/sec_about.svelte";
@@ -186,7 +186,10 @@
           f**k ios
         -->
         <div class="tet_hbar" style="margin: 0 auto;" />
-        <TypingText font_size={is_desktop ? 54 : 18} texts={TXT.typing_text} />
+        <TypingText
+          font_size={(50 / CST.sizes.mob_width) * clientWidth}
+          texts={TXT.typing_text}
+        />
         <div class="tet_hbar" style="margin: 0 auto;" />
       </div>
       <div
@@ -199,43 +202,22 @@
           </TextContainer>
         </div>
         <div class="marihacks_presentation_child">
-          <ImgSecPresenter />
+          <ImgSecAboutPresenter />
         </div>
       </div>
+      <div id="marihacks_img_carousel"></div>
     </div>
-    <div id="sec_sponsors"></div>
-    <h1>SPONSORS</h1>
+    <div id="sec_sponsors">
+      <div id="sec_sponsors_title">
+        <p
+          style="font-size: {(50 / CST.sizes.mob_width) *
+            clientWidth}px; font-family: {COLOR.pages.home.title.font}"
+        >
+          {TXT.sec_sponsor.title}
+        </p>
+      </div>
+    </div>
     <div id="sec_FAQ"></div>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
-    <h1>FAQ</h1>
     <h1>FAQ</h1>
   </div>
 </div>
@@ -320,5 +302,9 @@
 
   .marihacks_presentation_child {
     flex: 1;
+  }
+
+  #sec_sponsors_title {
+    justify-items: center;
   }
 </style>

@@ -16,7 +16,8 @@
     "Young Coders, Big Impact.",
     "Code. Solve. Repeat."
   ],
-  "sec_about": {
-    "rich_txt": "$lib/storage/page_info/home/sec_about.svelte"
+  "sec_sponsor": {
+    "title": "Our 2023-24 Sponsors",
+    "title_secondary": "MariHacks would not be possible without them."
   }
 }

@@ -1,8 +1,8 @@
 <script>
   import colors_json from "$lib/storage/color_palette.json";
-  let COLOR = colors_json.typing_key_board.default;
+  let COLOR = colors_json.pages.home.typing_key_board.default;
 
-  export let font_size = 60;
+  export let font_size = 54;
   export let texts = ["Hello", "World"];
 
   // setting for text cycles
